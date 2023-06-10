@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../backend/config/pdo.php");
+require_once(__DIR__ . "\..\config\pdo.php");
 
 class Empleado extends Conectar {
 
@@ -55,8 +55,8 @@ class Empleado extends Conectar {
 
     public function insert() {
         try {
-            $stm = $this-> db -> prepare("INSERT INTO empleados(empleadoId,nombreEmpleado,celularEmpleado,cargo VALUES (?,?,?,?)");
-            $stm->execute([$this->nombreEmpleado, $this->celularEmpleado, $this->cargo, $this->cargo]);
+            $stm = $this-> db -> prepare("INSERT INTO empleados(nombreEmpleado,celularEmpleado,cargo) VALUES (?,?,?)");
+            $stm->execute([$this->nombreEmpleado, $this->celularEmpleado, $this->cargo]);
         } catch (Exception $e) {
             return $e->getMessage();
         }

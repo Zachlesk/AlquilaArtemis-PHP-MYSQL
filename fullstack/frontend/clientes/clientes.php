@@ -45,14 +45,15 @@
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;"> Home </h3>
         </a>
-        <a href="../../fullstack/frontend/clientes/clientes.php" style="display: flex;gap:1px;">
-          <i class="bi bi-people"></i>
-          <h3 style="margin: 0px; font-weight: 800;"> Clientes </h3>
-        </a>
         <a href="../empleados/empleados.php" style="display: flex;gap:1px;">
         <i class="bi bi-person-vcard-fill"></i>
           <h3 style="margin: 0px;"> Empleados </h3>
         </a>
+        <a href="../clientes/clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px; font-weight: 800;"> Clientes </h3>
+        </a>
+        
 
         <a href="../cotizacion/cotizacion.php" style="display: flex;gap:1px;">
             <i class="bi bi-receipt-cutoff"></i>
