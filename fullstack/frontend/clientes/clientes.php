@@ -49,21 +49,21 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px; font-weight: 800;"> Clientes </h3>
         </a>
-        <a href="../../fullstack/frontend/empleados/empleados.php" style="display: flex;gap:1px;">
+        <a href="../empleados/empleados.php" style="display: flex;gap:1px;">
         <i class="bi bi-person-vcard-fill"></i>
           <h3 style="margin: 0px;"> Empleados </h3>
         </a>
 
-        <a href="../../fullstack/frontend/cotizacion/cotizacion.php" style="display: flex;gap:1px;">
+        <a href="../cotizacion/cotizacion.php" style="display: flex;gap:1px;">
             <i class="bi bi-receipt-cutoff"></i>
           <h3 style="margin: 0px;"> Cotización </h3>
         </a>
 
-        <a href="../../fullstack/frontend/facturacion/facturacion.php" style="display: flex;gap:1px;">
+        <a href="../facturacion/facturacion.php" style="display: flex;gap:1px;">
             <i class="bi bi-receipt-cutoff"></i>
           <h3 style="margin: 0px;"> Facturación </h3>
         </a>
-        <a href="../../fullstack/frontend/productos/productos.php" style="display: flex;gap:1px;">
+        <a href="../productos/productos.php" style="display: flex;gap:1px;">
         <i class="bi bi-bag-fill"></i>
           <h3 style="margin: 0px;"> Productos </h3>
         </a>

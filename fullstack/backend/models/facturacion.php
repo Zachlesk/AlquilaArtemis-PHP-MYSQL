@@ -3,7 +3,7 @@
 
 require_once("../../backend/config/pdo.php");
 
-class Empleado extends Conectar {
+class Facturacion extends Conectar {
 
     private $facturacionId;
     private $clienteId;
