@@ -6,6 +6,8 @@
 
   $all = $data -> obtain();
 
+  $idempleado = $data->obtenerEmpleadoId();
+
 ?>
 
 <!DOCTYPE html>
@@ -83,16 +85,16 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBRE</th>
-              <th scope="col">CELULAR</th>
-              <th scope="col">COMPAÑIA</th>
+              <th scope="col">NOMBRE CONSTUCTORA</th>
+              <th scope="col">EMPLEADO ENCARGADO</th>
+              <th scope="col">FECHA</th>
               <th scope="col">DETALLE</th>
               
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
+
          
             <?php
               foreach($all as $key => $val){
@@ -100,13 +102,13 @@
               
             ?>
             <tr>
-              <td><?php echo $val['clienteId']?>  </td>
-              <td><?php echo $val['nombre']?>  </td>
-              <td><?php echo $val['celular']?>  </td>
-              <td><?php echo $val['compania']?>  </td>
+              <td><?php echo $val['clientesId']?>  </td>
+              <td><?php echo $val['nombreConstructora']?>  </td>
+              <td><?php echo $val['empleadoEncargado']?>  </td>
+              <td><?php echo $val['fecha']?>  </td>
               <td>
-                <a class="btn btn-danger" href="borrarClientes.php?id=<?=$val['clienteId'] ?>&&req=delete"> Borrar </a>
-                <a class="btn btn-warning" href="actualizarClientes.php?id=<?=$val['clienteId'] ?>"> Editar </a>
+                <a class="btn btn-danger" href="../../backend/controllers/clientes/borrarClientes.php?id=<?=$val['clientesId'] ?>&&req=delete"> Borrar </a>
+                <a class="btn btn-warning" href="../../backend/controllers/clientes/actualizarClientes.php?id=<?=$val['clientesId'] ?>"> Editar </a>
               </td>
             </tr>
 
@@ -132,33 +134,37 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarClientes.php" method="post">
+            <form class="col d-flex flex-wrap" action="../../backend/controllers/clientes/registrarClientes.php" method="post">
 
             <div class="mb-1 col-12">
-                <label for="nombre" class="form-label"> Nombre </label>
+                <label for="nombreConstructora" class="form-label"> Nombre Constructora </label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="nombreConstructora"
+                  name="nombreConstructora"
                   class="form-control"  
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="celular" class="form-label"> Celular </label>
-                <input 
-                  type="text"
-                  id="celular"
-                  name="celular"
-                  class="form-control"  
-                />
+                <label for="empleadoEncargado" class="form-label"> Empleado Encargado </label>
+                <select class="form-select" aria-label="Default select example" id="empleadoEncargado" name="empleadoEncargado" required>
+                  <option selected> Seleccione el id del empleado encargado </option>
+                  <?php
+                    foreach($idempleado as $key => $valor){
+                    ?> 
+                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["nombreEmpleado"]?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
               </div>
 
               <div class="mb-1 col-12">
-                <label for="compania" class="form-label"> Compania </label>
+                <label for="fecha" class="form-label"> Fecha </label>
                 <input 
-                  type="text"
-                  id="compania"
-                  name="compania"
+                  type="date"
+                  id="fecha"
+                  name="fecha"
                   class="form-control"  
                 />
               </div>

@@ -1,11 +1,11 @@
 <?php
 
-require_once("../../backend/config/pdo.php");
+require_once(__DIR__ . "\..\config\pdo.php");
 
 class Clientes extends Conectar {
 
     private $clientesId;
-    private $nombreConstructura;
+    private $nombreConstructora;
     private $empleadoEncargado;
     private $fecha;
     
@@ -19,11 +19,11 @@ class Clientes extends Conectar {
     }
     
     //Getters
-    public function getEmpleadoId(){
-        return $this->empleadoId;
+    public function getClientesId(){
+        return $this->clientesId;
     }
 
-    public function getNombreConstructura(){
+    public function getNombreConstructora(){
         return $this->nombreEmpleado;
     }
 
@@ -36,12 +36,12 @@ class Clientes extends Conectar {
     }
 
     //Setters
-    public function setEmpleadoId($empleadoId){
-        $this->empleadoId =$empleadoId;
+    public function setClientesId($clientesId){
+        $this->clientesId =$clientesId;
     }
 
-    public function setNombreConstructura($nombreConstructura){
-        $this->nombreConstructura =$nombreConstructura;
+    public function setNombreConstructora($nombreConstructora){
+        $this->nombreConstructora =$nombreConstructora;
     }
 
     public function setEmpleadoEncargado($empleadoEncargado){
@@ -54,7 +54,7 @@ class Clientes extends Conectar {
 
     public function insert() {
         try {
-            $stm = $this-> db -> prepare("INSERT INTO constructoras_clientes(nombreConstructora,empleadoEncargado,fecha VALUES (?,?,?)");
+            $stm = $this-> db -> prepare("INSERT INTO constructoras_clientes(nombreConstructora,empleadoEncargado,fecha) VALUES (?,?,?)");
             $stm->execute([$this->nombreConstructora, $this->empleadoEncargado, $this->fecha]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -93,9 +93,19 @@ class Clientes extends Conectar {
 
     public function update(){
         try {
-            $stm = $this-> db -> prepare("UPDATE constructoras_clientes SET nombreContructora = ?, empleadoEncargado = ?, fecha = ?
+            $stm = $this-> db -> prepare("UPDATE constructoras_clientes SET nombreConstructora = ?, empleadoEncargado = ?, fecha = ?
             WHERE clientesId = ?");
             $stm -> execute([$this->nombreConstructora, $this->empleadoEncargado, $this->fecha, $this->clientesId]);
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtenerEmpleadoId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT empleadoId,nombreEmpleado FROM empleados");
+            $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
             return $e->getMessage();
