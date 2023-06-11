@@ -13,7 +13,7 @@ CREATE TABLE empleados (
 CREATE TABLE users (
     id INT PRIMARY KEY auto_increment,
     empleadoId INT NOT NULL,
-    username VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     FOREIGN KEY (empleadoId) REFERENCES empleados(empleadoId)
@@ -63,4 +63,4 @@ CREATE TABLE facturacion (
 
 );
 
-DROP TABLE facturacion;
+DROP TABLE users;

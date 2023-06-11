@@ -1,19 +1,20 @@
 <?php
 
-require_once("../../backend/config/pdo.php");
+require_once(__DIR__ . "\..\config\pdo.php");
+require_once("login.php");
 
-class Registro extends Conexion {
+class Registro extends Conectar {
     
     private $id;
     private $empleadoId;
-    private $username;
+    private $usuario;
     private $email;
     private $password;
 
-    public function __construct($id=0, $empleadoId=0, $username="", $email="", $password="") {
+    public function __construct($id=0, $empleadoId=0, $usuario="", $email="", $password="") {
         $this->id = $id;
         $this->empleadoId = $empleadoId;
-        $this->username = $username;
+        $this->usuario = $usuario;
         $this->email = $email;
         $this->password = $password;
         parent::__construct();
@@ -29,8 +30,8 @@ class Registro extends Conexion {
         return $this->empleadoId;
     }
 
-    public function getUsername() {
-        return $this->username;
+    public function getUsuario() {
+        return $this->usuario;
     }
 
     public function getEmail() {
@@ -51,8 +52,8 @@ class Registro extends Conexion {
         $this->empleadoId = $empleadoId;
     }
    
-    public function setUsername($username) {
-        $this->username = $username;
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
     }
     
     public function setEmail($email) {
@@ -66,7 +67,7 @@ class Registro extends Conexion {
 
     public function checkUser($email) {
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM users WHERE email = '$email'");
+            $stm = $this->db->prepare("SELECT * FROM users WHERE email = '$email'");
             $stm->execute();
             if($stm->fetchColumn()){
                 return true;
@@ -80,9 +81,9 @@ class Registro extends Conexion {
 
     public function insertData () {
             try { 
-                $stm = $this-> dbCnx -> prepare("INSERT INTO users (empleadoId,username,email,password) VALUES (?,?,?,?)");
-                $stm -> execute ([$this->empleadoId, $this->username, $this->email, md5($this->password)]);
-                $login = new LoginUser;
+                $stm = $this-> db -> prepare("INSERT INTO users (empleadoId,usuario,email,password) VALUES (?,?,?,?)");
+                $stm -> execute ([$this->empleadoId, $this->usuario, $this->email, md5($this->password)]);
+                $login = new Login;
 
                 $login-> setEmail($_POST["email"]);
                 $login-> setPassword($_POST["password"]);
