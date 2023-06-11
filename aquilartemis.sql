@@ -28,6 +28,16 @@ CREATE TABLE constructoras_clientes (
 
 );
 
+CREATE TABLE productos (
+    productosId INT PRIMARY KEY auto_increment,
+    nombreProducto VARCHAR(255) NOT NULL,
+    tipoProducto VARCHAR(255) NOT NULL,
+    descripcionProducto VARCHAR(255) NOT NULL,
+    precioUnitario VARCHAR(255) NOT NULL,
+    stock VARCHAR(255) NOT NULL
+);
+
+
 CREATE TABLE detalle_cotizacion ( 
     detalleId INT PRIMARY KEY auto_increment,
     cliente INT NOT NULL,
@@ -38,6 +48,7 @@ CREATE TABLE detalle_cotizacion (
     precioDiaAlquiler VARCHAR(255) NOT NULL,
     totalCotizacion VARCHAR(255) NOT NULL,
     FOREIGN KEY (cliente) REFERENCES constructoras_clientes(clientesId) 
+    FOREIGN KEY (productosAlquilados) REFERENCES productos(productosId) 
 );
 
 CREATE TABLE facturacion (
@@ -52,14 +63,4 @@ CREATE TABLE facturacion (
 
 );
 
-/* CREATE TABLE productos (
-    id_productos INT NOT NULL,
-    nombre_producto VACREATE TABLE productos (
-    id_productos INT NOT NULL,
-    nombre_producto VARCHAR(255) NOT NULL,
-
-
- )RCHAR(255) NOT NULL,
-
-
- ) */
+DROP TABLE productos;

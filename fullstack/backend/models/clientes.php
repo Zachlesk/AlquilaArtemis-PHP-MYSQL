@@ -24,11 +24,11 @@ class Clientes extends Conectar {
     }
 
     public function getNombreConstructora(){
-        return $this->nombreEmpleado;
+        return $this->nombreConstructora;
     }
 
     public function getEmpleadoEncargado(){
-        return $this->empleadoEmpleado;
+        return $this->empleadoEncargado;
     }
 
     public function getFecha(){

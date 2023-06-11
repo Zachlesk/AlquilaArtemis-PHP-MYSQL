@@ -55,8 +55,10 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px; font-weight: 800;"> Clientes </h3>
         </a>
-        
-
+        <a href="../productos/productos.php" style="display: flex;gap:1px;">
+        <i class="bi bi-bag-fill"></i>
+          <h3 style="margin: 0px;"> Productos </h3>
+        </a>
         <a href="../cotizacion/cotizacion.php" style="display: flex;gap:1px;">
             <i class="bi bi-receipt-cutoff"></i>
           <h3 style="margin: 0px;"> Cotización </h3>
@@ -66,11 +68,7 @@
             <i class="bi bi-receipt-cutoff"></i>
           <h3 style="margin: 0px;"> Facturación </h3>
         </a>
-        <a href="../productos/productos.php" style="display: flex;gap:1px;">
-        <i class="bi bi-bag-fill"></i>
-          <h3 style="margin: 0px;"> Productos </h3>
-        </a>
-
+        
 
       </div>
     </div>
