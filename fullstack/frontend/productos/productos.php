@@ -59,7 +59,7 @@
         </a>
 
         <a href="../cotizacion/cotizacion.php" style="display: flex;gap:1px;">
-            <i class="bi bi-receipt-cutoff"></i>
+          <i class="bi bi-calendar-check"></i>
           <h3 style="margin: 0px;"> Cotización </h3>
         </a>
 
@@ -75,7 +75,7 @@
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2> Clientes </h2>
+        <h2> Productos </h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarClientes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">

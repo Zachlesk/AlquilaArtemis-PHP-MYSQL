@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("../../backend/config/pdo.php");
+require_once(__DIR__ . "\..\config\pdo.php");
 
 class Detalles extends Conectar {
 
@@ -61,7 +61,7 @@ class Detalles extends Conectar {
     }
 
     //Setters
-    public function setEmpleadoId($detalleId){
+    public function setDetalleId($detalleId){
         $this->detalleId =$detalleId;
     }
 
@@ -96,7 +96,7 @@ class Detalles extends Conectar {
 
     public function insert() {
         try {
-            $stm = $this-> db -> prepare("INSERT INTO detalle_cotizacion(detalleId,cliente,productosAlquilados,fechaAlquilado,horaAlquiler,duracionAlquiler,precioDiaAlquiler,totalCotizacion VALUES (?,?,?,?,?,?,?,?)");
+            $stm = $this-> db -> prepare("INSERT INTO detalle_cotizacion(cliente,productosAlquilados,fechaAlquilado,horaAlquiler,duracionAlquiler,precioDiaAlquiler,totalCotizacion) VALUES (?,?,?,?,?,?,?)");
             $stm->execute([$this->cliente, $this->productosAlquilados, $this->fechaAlquilado, $this->horaAlquiler,  $this->duracionAlquiler,  $this->precioDiaAlquiler,  $this->totalCotizacion]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -138,6 +138,26 @@ class Detalles extends Conectar {
             $stm = $this-> db -> prepare("UPDATE detalle_cotizacion SET cliente= ?, productosAlquilados= ?, fechaAlquilado= ?, horaAlquiler = ?, duracionAlquiler= ?, precioDiaAlquiler= ? , totalCotizacion= ?  
             WHERE detalleId = ?");
             $stm -> execute([$this->cliente, $this->productosAlquilados, $this->fechaAlquilado, $this->horaAlquiler,  $this->duracionAlquiler,  $this->precioDiaAlquiler,  $this->totalCotizacion, $this->detalleId]);
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtenerClienteId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT clientesId,nombreConstructora FROM constructoras_clientes");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtenerProductoId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT productosId,nombreProducto FROM productos");
+            $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
             return $e->getMessage();

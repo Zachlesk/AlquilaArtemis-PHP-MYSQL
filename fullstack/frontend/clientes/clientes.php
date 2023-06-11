@@ -60,7 +60,7 @@
           <h3 style="margin: 0px;"> Productos </h3>
         </a>
         <a href="../cotizacion/cotizacion.php" style="display: flex;gap:1px;">
-            <i class="bi bi-receipt-cutoff"></i>
+        <i class="bi bi-calendar-check"></i>
           <h3 style="margin: 0px;"> Cotización </h3>
         </a>
 
