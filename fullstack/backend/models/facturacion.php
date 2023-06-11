@@ -1,21 +1,20 @@
 <?php
 
-
-require_once("../../backend/config/pdo.php");
+require_once(__DIR__ . "\..\config\pdo.php");
 
 class Facturacion extends Conectar {
 
     private $facturacionId;
     private $clienteId;
     private $empleadoId;
-    private $cotizacion;
+    private $cotizacionId;
     private $fechaFacturacion;
 
-    public function __construct($facturacionId= 0, $clienteId= 0, $empleadoId=0, $cotizacion=0, $fechaFacturacion=""){
+    public function __construct($facturacionId= 0, $clienteId= 0, $empleadoId=0, $cotizacionId=0, $fechaFacturacion=""){
         $this->facturacionId = $facturacionId;
         $this->clienteId = $clienteId;
         $this->empleadoId = $empleadoId;
-        $this->cotizacion = $cotizacion;
+        $this->cotizacionId = $cotizacionId;
         $this->fechaFacturacion = $fechaFacturacion;
         parent::__construct();
     }
@@ -34,8 +33,8 @@ class Facturacion extends Conectar {
         return $this->empleadoId;
     }
 
-    public function getCotizacion(){
-        return $this->cotizacion;
+    public function getCotizacionId(){
+        return $this->cotizacionId;
     }
 
     public function getFechaFacturacion(){
@@ -56,8 +55,8 @@ class Facturacion extends Conectar {
         $this->empleadoId =$empleadoId;
     }
 
-    public function setCotizacion($cotizacion){
-        $this->cotizacion = $cotizacion;
+    public function setCotizacionId($cotizacionId){
+        $this->cotizacionId = $cotizacionId;
     }
 
     public function setFechaFacturacion($fechaFacturacion){
@@ -67,8 +66,8 @@ class Facturacion extends Conectar {
 
     public function insert() {
         try {
-            $stm = $this-> db -> prepare("INSERT INTO facturacion(facturacionId,clienteId,empleadoId,cotizacion,fechaFacturacion VALUES (?,?,?,?,?)");
-            $stm->execute([$this->clienteId, $this->empleadoId, $this->cotizacion, $this->fechaFacturacion]);
+            $stm = $this-> db -> prepare("INSERT INTO facturacion(clienteId,empleadoId,cotizacionId,fechaFacturacion) VALUES (?,?,?,?)");
+            $stm->execute([$this->clienteId, $this->empleadoId, $this->cotizacionId, $this->fechaFacturacion]);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -106,15 +105,47 @@ class Facturacion extends Conectar {
 
     public function update(){
         try {
-            $stm = $this-> db -> prepare("UPDATE facturacion SET clienteId= ?, empleadoId= ?, cotizacion= ?, fechaFacturacion = ?
+            $stm = $this-> db -> prepare("UPDATE facturacion SET clienteId= ?, empleadoId= ?, cotizacionId= ?, fechaFacturacion = ?
             WHERE facturacionId = ?");
-            $stm -> execute([$this->clienteId, $this->empleadoId, $this->cotizacion, $this->fechaFacturacion, $this->fechaFacturacion]);
+            $stm -> execute([$this->clienteId, $this->empleadoId, $this->cotizacionId, $this->fechaFacturacion, $this->facturacionId]);
             return $stm -> fetchAll();
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
 
+    public function obtenerClienteId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT clientesId,nombreConstructora FROM constructoras_clientes");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtenerEmpleadoId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT empleadoId,nombreEmpleado FROM empleados");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+
+    public function obtenerCotizacionId(){
+        try {
+            $stm = $this-> db -> prepare("SELECT detalleId FROM detalle_cotizacion");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
+
+
 
 ?>

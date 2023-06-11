@@ -55,12 +55,12 @@ CREATE TABLE facturacion (
     facturacionId INT PRIMARY KEY auto_increment,
     clienteId INT NOT NULL,
     empleadoId INT NOT NULL,
-    cotizacion INT NOT NULL,
+    cotizacionId INT NOT NULL,
     fechaFacturacion VARCHAR(255) NOT NULL,
     FOREIGN KEY (clienteId) REFERENCES constructoras_clientes(clientesId),
     FOREIGN KEY (empleadoId) REFERENCES empleados(empleadoId),
-    FOREIGN KEY (cotizacion) REFERENCES detalle_cotizacion(detalleId)
+    FOREIGN KEY (cotizacionId) REFERENCES detalle_cotizacion(detalleId)
 
 );
 
-DROP TABLE productos;
+DROP TABLE facturacion;
