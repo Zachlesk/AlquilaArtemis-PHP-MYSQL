@@ -91,8 +91,7 @@
           </thead>
           <tbody class="" id="tabla">
 
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
+           
             <?php
               foreach($all as $key => $val){
                
@@ -131,7 +130,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="../../backend/controllers../empleados/registrarEmpleado.php" method="post">
+            <form class="col d-flex flex-wrap" action="../../backend/controllers/empleados/registrarEmpleado.php" method="post">
 
             <div class="mb-1 col-12">
                 <label for="nombreEmpleado" class="form-label"> Nombre </label>

@@ -1,5 +1,9 @@
 <?php
+ini_set("display_errors", 1);
 
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL);
 require_once("../../models/detalles.php");
 
     $data = new Detalles();
@@ -8,7 +12,7 @@ require_once("../../models/detalles.php");
 
     $idcliente = $data->obtenerClienteId();
     $idproducto = $data->obtenerProductoId();
-    $data-> setEmpleadoId($id);
+    $data-> setDetalleId($id);
     $record = $data->select();
     $val = $record[0];
 

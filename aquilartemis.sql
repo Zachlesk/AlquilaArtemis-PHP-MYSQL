@@ -41,13 +41,13 @@ CREATE TABLE productos (
 CREATE TABLE detalle_cotizacion ( 
     detalleId INT PRIMARY KEY auto_increment,
     cliente INT NOT NULL,
-    productosAlquilados VARCHAR(255) NOT NULL,
+    productosAlquilados INT NOT NULL,
     fechaAlquilado VARCHAR(255) NOT NULL,
     horaAlquiler VARCHAR(255) NOT NULL,   
     duracionAlquiler VARCHAR(255) NOT NULL, 
     precioDiaAlquiler VARCHAR(255) NOT NULL,
     totalCotizacion VARCHAR(255) NOT NULL,
-    FOREIGN KEY (cliente) REFERENCES constructoras_clientes(clientesId) 
+    FOREIGN KEY (cliente) REFERENCES constructoras_clientes(clientesId), 
     FOREIGN KEY (productosAlquilados) REFERENCES productos(productosId) 
 );
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . "\..\config\pdo.php");
+require_once(__DIR__ . "/../config/pdo.php");
 
 class Productos extends Conectar {
 
